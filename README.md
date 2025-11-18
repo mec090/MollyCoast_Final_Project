@@ -916,6 +916,189 @@ else:
 import numpy
 ```
 
+## Making Choices
+
+```python
+import numpy
+```
+
+
+```python
+data = numpy.loadtxt(fname ='inflammation-01.csv', delimiter=',')
+
+
+```
+
+
+    ---------------------------------------------------------------------------
+
+    OSError                                   Traceback (most recent call last)
+
+    <ipython-input-2-983f06396966> in <module>
+    ----> 1 data = numpy.loadtxt(fname ='inflammation-01.csv', delimiter=',')
+          2 
+
+
+    ~/anaconda3/lib/python3.7/site-packages/numpy/lib/npyio.py in loadtxt(fname, dtype, comments, delimiter, converters, skiprows, usecols, unpack, ndmin, encoding, max_rows)
+        966             fname = os_fspath(fname)
+        967         if _is_string_like(fname):
+    --> 968             fh = np.lib._datasource.open(fname, 'rt', encoding=encoding)
+        969             fencoding = getattr(fh, 'encoding', 'latin1')
+        970             fh = iter(fh)
+
+
+    ~/anaconda3/lib/python3.7/site-packages/numpy/lib/_datasource.py in open(path, mode, destpath, encoding, newline)
+        267 
+        268     ds = DataSource(destpath)
+    --> 269     return ds.open(path, mode, encoding=encoding, newline=newline)
+        270 
+        271 
+
+
+    ~/anaconda3/lib/python3.7/site-packages/numpy/lib/_datasource.py in open(self, path, mode, encoding, newline)
+        621                                       encoding=encoding, newline=newline)
+        622         else:
+    --> 623             raise IOError("%s not found." % path)
+        624 
+        625 
+
+
+    OSError: inflammation-01.csv not found.
+
+
+
+```python
+max_inflammation_20 = numpy.amax(data, axis = 0)[20]
+
+if max_inflammation_0 == 0 and max_inflammation_20 ==20:
+    print('Saspictious looking maxima!')
+```
+
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-3-df45b80625e5> in <module>
+    ----> 1 max_inflammation_20 = numpy.amax(data, axis = 0)[20]
+          2 
+          3 if max_inflammation_0 == 0 and max_inflammation_20 ==20:
+          4     print('Saspictious looking maxima!')
+
+
+    NameError: name 'data' is not defined
+
+
+
+```python
+max_inflammation_20 = numpy.amax(data, axis = 0)[20]
+
+if max_inflammation_0 == 0 and max_inflammation_20 ==20:
+    print('Saspictious looking maxima!')
+```
+
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-4-df45b80625e5> in <module>
+    ----> 1 max_inflammation_20 = numpy.amax(data, axis = 0)[20]
+          2 
+          3 if max_inflammation_0 == 0 and max_inflammation_20 ==20:
+          4     print('Saspictious looking maxima!')
+
+
+    NameError: name 'data' is not defined
+
+
+
+```python
+max_inflammation_20 = numpy.amax(data, axis = 0)[20]
+
+if max_inflammation_0 == 0 and max_inflammation_20 ==20:
+    print('Saspictious looking maxima!')
+    
+elif numpy.sum(numpy.amin(data, axis=0)) ==0:
+    print('Minima add up to zero!')
+    
+else:
+    print('Seems OK!')
+```
+
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-5-e9eae2758fe6> in <module>
+    ----> 1 max_inflammation_20 = numpy.amax(data, axis = 0)[20]
+          2 
+          3 if max_inflammation_0 == 0 and max_inflammation_20 ==20:
+          4     print('Saspictious looking maxima!')
+          5 
+
+
+    NameError: name 'data' is not defined
+
+
+
+```python
+data = numpy.loadtxt(fname = 'inflammation-03.csv', delimiter=',')
+
+max_inflammation_0 = numpy.amax(data, axis = 0)[0]
+
+max_inflammation_20 = numpy.amax(data, axis = 0)[20]
+
+if max_inflammation_0 == 0 and max_inflammation_20 ==20:
+    print('Suspicious looking maxima!')
+elif numpy.sum(numpy.amin(data, axis=0)) ==0:
+    print('Minima add up to zero! -> HEALTHY PARTICIPANT ALERT!')
+else:
+    print('Seems ok!')
+```
+
+
+    ---------------------------------------------------------------------------
+
+    OSError                                   Traceback (most recent call last)
+
+    <ipython-input-6-2b3ae1b696be> in <module>
+    ----> 1 data = numpy.loadtxt(fname = 'inflammation-03.csv', delimiter=',')
+          2 
+          3 max_inflammation_0 = numpy.amax(data, axis = 0)[0]
+          4 
+          5 max_inflammation_20 = numpy.amax(data, axis = 0)[20]
+
+
+    ~/anaconda3/lib/python3.7/site-packages/numpy/lib/npyio.py in loadtxt(fname, dtype, comments, delimiter, converters, skiprows, usecols, unpack, ndmin, encoding, max_rows)
+        966             fname = os_fspath(fname)
+        967         if _is_string_like(fname):
+    --> 968             fh = np.lib._datasource.open(fname, 'rt', encoding=encoding)
+        969             fencoding = getattr(fh, 'encoding', 'latin1')
+        970             fh = iter(fh)
+
+
+    ~/anaconda3/lib/python3.7/site-packages/numpy/lib/_datasource.py in open(path, mode, destpath, encoding, newline)
+        267 
+        268     ds = DataSource(destpath)
+    --> 269     return ds.open(path, mode, encoding=encoding, newline=newline)
+        270 
+        271 
+
+
+    ~/anaconda3/lib/python3.7/site-packages/numpy/lib/_datasource.py in open(self, path, mode, encoding, newline)
+        621                                       encoding=encoding, newline=newline)
+        622         else:
+    --> 623             raise IOError("%s not found." % path)
+        624 
+        625 
+
+
+    OSError: inflammation-03.csv not found.
+
+
+
 
 
 
