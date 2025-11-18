@@ -1762,6 +1762,432 @@ numpy.loadtxt('inflammation-01.csv', delimiter = ',')
            [0., 0., 0., ..., 0., 2., 0.],
            [0., 0., 1., ..., 1., 1., 0.]])
 
+## Notebook 1 and 2
+
+```python
+%matplotlib inline
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set(style = "darkgrid")
+```
+
+
+```python
+df = pd.read_csv('/home/student/Desktop/classroom/myfiles/notebooks/fortune500.csv')
+```
+
+
+    ---------------------------------------------------------------------------
+
+    FileNotFoundError                         Traceback (most recent call last)
+
+    <ipython-input-2-64bd1e97ca60> in <module>
+    ----> 1 df = pd.read_csv('/home/student/Desktop/classroom/myfiles/notebooks/fortune500.csv')
+    
+
+    ~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py in parser_f(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, dialect, error_bad_lines, warn_bad_lines, delim_whitespace, low_memory, memory_map, float_precision)
+        683         )
+        684 
+    --> 685         return _read(filepath_or_buffer, kwds)
+        686 
+        687     parser_f.__name__ = name
+
+
+    ~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py in _read(filepath_or_buffer, kwds)
+        455 
+        456     # Create the parser.
+    --> 457     parser = TextFileReader(fp_or_buf, **kwds)
+        458 
+        459     if chunksize or iterator:
+
+
+    ~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py in __init__(self, f, engine, **kwds)
+        893             self.options["has_index_names"] = kwds["has_index_names"]
+        894 
+    --> 895         self._make_engine(self.engine)
+        896 
+        897     def close(self):
+
+
+    ~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py in _make_engine(self, engine)
+       1133     def _make_engine(self, engine="c"):
+       1134         if engine == "c":
+    -> 1135             self._engine = CParserWrapper(self.f, **self.options)
+       1136         else:
+       1137             if engine == "python":
+
+
+    ~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py in __init__(self, src, **kwds)
+       1915         kwds["usecols"] = self.usecols
+       1916 
+    -> 1917         self._reader = parsers.TextReader(src, **kwds)
+       1918         self.unnamed_cols = self._reader.unnamed_cols
+       1919 
+
+
+    pandas/_libs/parsers.pyx in pandas._libs.parsers.TextReader.__cinit__()
+
+
+    pandas/_libs/parsers.pyx in pandas._libs.parsers.TextReader._setup_parser_source()
+
+
+    FileNotFoundError: [Errno 2] File b'/home/student/Desktop/classroom/myfiles/notebooks/fortune500.csv' does not exist: b'/home/student/Desktop/classroom/myfiles/notebooks/fortune500.csv'
+
+
+
+```python
+df.head()
+```
+
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-3-c42a15b2c7cf> in <module>
+    ----> 1 df.head()
+    
+
+    NameError: name 'df' is not defined
+
+
+
+```python
+df.tail()
+```
+
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-4-4add252522c8> in <module>
+    ----> 1 df.tail()
+    
+
+    NameError: name 'df' is not defined
+
+
+
+```python
+df.columns = ['year', 'rank', 'company', 'revenue', 'profit']
+```
+
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-5-0adc3afbefda> in <module>
+    ----> 1 df.columns = ['year', 'rank', 'company', 'revenue', 'profit']
+    
+
+    NameError: name 'df' is not defined
+
+
+
+```python
+df.head()
+```
+
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-6-c42a15b2c7cf> in <module>
+    ----> 1 df.head()
+    
+
+    NameError: name 'df' is not defined
+
+
+
+```python
+.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+```
+
+
+      File "<ipython-input-7-66cfc81c6b76>", line 1
+        .dataframe tbody tr th {
+        ^
+    SyntaxError: invalid syntax
+
+
+
+
+```python
+len(df)
+```
+
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-8-9e112543b788> in <module>
+    ----> 1 len(df)
+    
+
+    NameError: name 'df' is not defined
+
+
+
+```python
+df.dtypes
+```
+
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-9-5cc0934cc03c> in <module>
+    ----> 1 df.dtypes
+    
+
+    NameError: name 'df' is not defined
+
+
+
+```python
+ non_numeric_profits = df.profit.str.contains('[^0-9.-]')
+df.loc[non_numeric_profits].head()
+```
+
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-10-86236d22b200> in <module>
+    ----> 1 non_numeric_profits = df.profit.str.contains('[^0-9.-]')
+          2 df.loc[non_numeric_profits].head()
+
+
+    NameError: name 'df' is not defined
+
+
+
+```python
+set(df.profit[non_numeric_profits])
+```
+
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-11-54623800424b> in <module>
+    ----> 1 set(df.profit[non_numeric_profits])
+    
+
+    NameError: name 'df' is not defined
+
+
+
+```python
+len(df.profit[non_numeric_profits])
+```
+
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-12-52149240f8d6> in <module>
+    ----> 1 len(df.profit[non_numeric_profits])
+    
+
+    NameError: name 'df' is not defined
+
+
+
+```python
+bin_sizes, _, _ = plt.hist(df.year[non_numeric_profits], bins= range(1955,2006))
+```
+
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-13-f64445d80d5b> in <module>
+    ----> 1 bin_sizes, _, _ = plt.hist(df.year[non_numeric_profits], bins= range(1955,2006))
+    
+
+    NameError: name 'df' is not defined
+
+
+
+```python
+df = df.loc[~non_numeric_profits]
+df.profit = df.profit.apply(pd.to_numeric)
+```
+
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-14-349fe0dc12ea> in <module>
+    ----> 1 df = df.loc[~non_numeric_profits]
+          2 df.profit = df.profit.apply(pd.to_numeric)
+
+
+    NameError: name 'df' is not defined
+
+
+
+```python
+len(df)
+```
+
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-15-9e112543b788> in <module>
+    ----> 1 len(df)
+    
+
+    NameError: name 'df' is not defined
+
+
+
+```python
+df.dtypes
+```
+
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-16-5cc0934cc03c> in <module>
+    ----> 1 df.dtypes
+    
+
+    NameError: name 'df' is not defined
+
+
+
+```python
+group_by_year = df.loc[:, ['year', 'revenue', 'profit']].groupby('year')
+avgs = group_by_year.mean()
+x = avgs.index
+y1 = avgs.profit
+def plot(x, y, ax, title, y_label):
+    ax.set_title(title)
+    ax.set_ylabel(y_label)
+    ax.plot(x, y)
+    ax.margins(x = 0, y = 0)
+```
+
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-17-bdbc54493e70> in <module>
+    ----> 1 group_by_year = df.loc[:, ['year', 'revenue', 'profit']].groupby('year')
+          2 avgs = group_by_year.mean()
+          3 x = avgs.index
+          4 y1 = avgs.profit
+          5 def plot(x, y, ax, title, y_label):
+
+
+    NameError: name 'df' is not defined
+
+
+
+```python
+fig, ax = plt.subplots()
+plot(x, y1, ax, 'Increase in mean Fortune 500 company profits from 1955 to 2005', 'Profit (millions)')
+```
+
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-18-16dd37784a6c> in <module>
+          1 fig, ax = plt.subplots()
+    ----> 2 plot(x, y1, ax, 'Increase in mean Fortune 500 company profits from 1955 to 2005', 'Profit (millions)')
+    
+
+    NameError: name 'plot' is not defined
+
+
+
+![png](output_17_1.png)
+
+
+
+```python
+y2 = avgs.revenue
+fig, ax = plt.subplots()
+plot(x, y2, ax, 'Increase in mean Fortune 500 company revenues from 1955 to 2005', 'Revenue (millions)')
+```
+
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-19-0d9fe964f897> in <module>
+    ----> 1 y2 = avgs.revenue
+          2 fig, ax = plt.subplots()
+          3 plot(x, y2, ax, 'Increase in mean Fortune 500 company revenues from 1955 to 2005', 'Revenue (millions)')
+
+
+    NameError: name 'avgs' is not defined
+
+
+
+```python
+def plot_with_std(x, y, stds, ax, title, y_label):
+    ax.fill_between(x, y - stds, y + stds, alpha = 0.2)
+    plot(x, y, ax, title, y_label)
+fig, (ax1, ax2) = plt.subplots(ncols= 2)
+title = 'Increase in mean and std fortune 500 company %s from 1955 to 2005'
+stds1 = group_by_year.std().profit.values
+stds2 = group_by_year.std().revenue.values
+plot_with_std(x, y1.values, stds1, ax1, title % 'profits', 'Profit (millions)')
+plot_with_std(x, y2.values, stds2, ax2, title % 'revenues', 'Revenue(millions)')
+fig.set_size_inches(14,4)
+fig.tight_layout()
+```
+
+
+    ---------------------------------------------------------------------------
+
+    NameError                                 Traceback (most recent call last)
+
+    <ipython-input-20-2799ddda0dff> in <module>
+          4 fig, (ax1, ax2) = plt.subplots(ncols= 2)
+          5 title = 'Increase in mean and std fortune 500 company %s from 1955 to 2005'
+    ----> 6 stds1 = group_by_year.std().profit.values
+          7 stds2 = group_by_year.std().revenue.values
+          8 plot_with_std(x, y1.values, stds1, ax1, title % 'profits', 'Profit (millions)')
+
+
+    NameError: name 'group_by_year' is not defined
+
+
+
+![png](output_19_1.png)
+
+
+
 
 
 
