@@ -727,9 +727,126 @@ print('weight in kilograms is now:', weight_kg)
 
     weight in kilograms is now: 65.0
 
+## Defensive Programming
+
+```python
+numbers = [1.5, 2.3, 0.7, -0.001, 4.4]
+total = 0.0
+for num in numbers:
+    assert num > 0.0,'Data should only contain positive valuse'
+    total += num
+print( 'total is:', total)
+```
+
+
+    ---------------------------------------------------------------------------
+
+    AssertionError                            Traceback (most recent call last)
+
+    <ipython-input-1-d5cddad0f3bd> in <module>
+          2 total = 0.0
+          3 for num in numbers:
+    ----> 4     assert num > 0.0,'Data should only contain positive valuse'
+          5     total += num
+          6 print( 'total is:', total)
+
+
+    AssertionError: Data should only contain positive valuse
 
 
 
+```python
+def normalize_rectangle(rect):
+    """Normalizes a rectangle so that it is at the origin and 1.0 units long on its logest axis. input should be of the format (x0, yo, x1, y1).
+    (x0, y0) and (x1, yl) define the lower left and upper right corners of the rectangle respectively.""" 
+    assert len(rect) == 4, 'Rectangles must contain 4 coordinates'
+    x0, y0, x1, y1 = rect
+    assert x0 < x1, 'Invalid X coordinates'
+    assert y0 < y1, 'Invalid Y coordinates'
+    
+    dx = x1 - x0
+    dy = y1 - y0
+    if dx > dy:
+        scaled = dy / dx
+        upper_x, upper_y = 1.0, scaled
+    else:
+            scaled = dx / dy
+            upper_x, upper_y = scaled, 1.0
+    assert 0 < upper_x <= 1.0, 'Calculated upper x coordinate invalid'
+    assert 0 < upper_y <= 1.0, 'Calculated upper y coordinate invalid'
+    
+    return(0, 0, upper_x, upper_y)
+
+```
+
+
+```python
+print(normalize_rectangle( (0.0, 1.0, 2.0) ))
+```
+
+
+    ---------------------------------------------------------------------------
+
+    AssertionError                            Traceback (most recent call last)
+
+    <ipython-input-3-f9d109085db1> in <module>
+    ----> 1 print(normalize_rectangle( (0.0, 1.0, 2.0) ))
+    
+
+    <ipython-input-2-8452a6a06c08> in normalize_rectangle(rect)
+          2     """Normalizes a rectangle so that it is at the origin and 1.0 units long on its logest axis. input should be of the format (x0, yo, x1, y1).
+          3     (x0, y0) and (x1, yl) define the lower left and upper right corners of the rectangle respectively.""" 
+    ----> 4     assert len(rect) == 4, 'Rectangles must contain 4 coordinates'
+          5     x0, y0, x1, y1 = rect
+          6     assert x0 < x1, 'Invalid X coordinates'
+
+
+    AssertionError: Rectangles must contain 4 coordinates
+
+
+
+```python
+print(normalize_rectangle( (4.0, 2.0, 1.0, 5.0) ))
+```
+
+
+    ---------------------------------------------------------------------------
+
+    AssertionError                            Traceback (most recent call last)
+
+    <ipython-input-4-f7e0d48bdfd0> in <module>
+    ----> 1 print(normalize_rectangle( (4.0, 2.0, 1.0, 5.0) ))
+    
+
+    <ipython-input-2-8452a6a06c08> in normalize_rectangle(rect)
+          4     assert len(rect) == 4, 'Rectangles must contain 4 coordinates'
+          5     x0, y0, x1, y1 = rect
+    ----> 6     assert x0 < x1, 'Invalid X coordinates'
+          7     assert y0 < y1, 'Invalid Y coordinates'
+          8 
+
+
+    AssertionError: Invalid X coordinates
+
+
+
+```python
+print(normalize_rectangle( (0.0, 0.0, 1.0, 5.0)))
+```
+
+    (0, 0, 0.2, 1.0)
+
+
+
+```python
+print(normalize_rectangle( (0.0, 0.0, 5.0, 1.0)))
+```
+
+    (0, 0, 1.0, 0.2)
+
+
+
+]
 
 
 
